@@ -1,6 +1,5 @@
 package br.org.itai.identidade.models;
 
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,7 +7,7 @@ import javax.persistence.Id;
 import java.io.Serializable;
 
 @Entity
-public class Autor implements Serializable {
+public class Editor implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -37,7 +36,7 @@ public class Autor implements Serializable {
 
     @Override
     public String toString() {
-        return "Autor{" +
+        return "Editor{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
                 '}';

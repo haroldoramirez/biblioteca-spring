@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-public class Livro implements Serializable {
+public class Book implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -29,13 +29,13 @@ public class Livro implements Serializable {
     private String isbn;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    private List<Autor> autores;
+    private List<Author> autores;
 
     @ManyToOne(cascade = CascadeType.MERGE, optional = false)
-    private Categoria categoria;
+    private Category category;
 
     @ManyToOne(cascade = CascadeType.MERGE, optional = false)
-    private Editora editora;
+    private Editor editor;
 
     public Long getId() {
         return id;
@@ -85,33 +85,33 @@ public class Livro implements Serializable {
         this.isbn = isbn;
     }
 
-    public List<Autor> getAutores() {
+    public List<Author> getAutores() {
         return autores;
     }
 
-    public void setAutores(List<Autor> autores) {
+    public void setAutores(List<Author> autores) {
         this.autores = autores;
     }
 
-    public Categoria getCategoria() {
-        return categoria;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
-    public Editora getEditora() {
-        return editora;
+    public Editor getEditor() {
+        return editor;
     }
 
-    public void setEditora(Editora editora) {
-        this.editora = editora;
+    public void setEditor(Editor editor) {
+        this.editor = editor;
     }
 
     @Override
     public String toString() {
-        return "Livro{" +
+        return "Book{" +
                 "id=" + id +
                 ", titulo='" + titulo + '\'' +
                 ", subTitulo='" + subTitulo + '\'' +
@@ -119,8 +119,8 @@ public class Livro implements Serializable {
                 ", ano=" + ano +
                 ", isbn='" + isbn + '\'' +
                 ", autores=" + autores +
-                ", categoria=" + categoria +
-                ", editora=" + editora +
+                ", category=" + category +
+                ", editor=" + editor +
                 '}';
     }
 }

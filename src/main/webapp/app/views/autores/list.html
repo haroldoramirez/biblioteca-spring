@@ -10,7 +10,7 @@
 
     <!--Input de Busca-->
     <div class="col-md-5 input-group">
-        <input ng-model="nomeFiltro" type="search" class="form-control" placeholder="digite o nome do autor">
+        <input ng-model="nomeFiltro" type="search" class="form-control" placeholder="digite o nome do author">
         <span class="input-group-btn">
             <button ng-disabled="!nomeFiltro" class="btn btn-primary" ng-click="busca();"><span class="fa fa-search"></span> Filtrar</button>
             <button class="btn btn-default" ng-click="init();">Limpar</button>
@@ -28,8 +28,8 @@
         <tr>
             <th>Nome</th>
         </tr>
-        <tr ng-repeat="autor in autores">
-            <td><b><a href="#/autores/detalhe/{{autor.id}}">{{autor.nome}}</a></b></td>
+        <tr ng-repeat="author in autores">
+            <td><b><a href="#/autores/detalhe/{{author.id}}">{{author.nome}}</a></b></td>
         </tr>
     </table>
 </div>

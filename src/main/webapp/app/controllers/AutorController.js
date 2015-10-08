@@ -6,7 +6,8 @@ angular.module('biblioteca')
               toastr.success($scope.autor.nome, 'Salvo com Sucesso.');
               $location.path('/autores');
           }, function(data) {
-              toastr.error(data.data, 'Não foi possível Salvar.');
+              console.log(data);
+              toastr.error(data.data.message, 'Não foi possível Salvar.');
           });
       };
 
