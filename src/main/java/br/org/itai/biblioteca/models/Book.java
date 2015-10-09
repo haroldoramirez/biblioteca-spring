@@ -1,4 +1,4 @@
-package br.org.itai.identidade.models;
+package br.org.itai.biblioteca.models;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -14,22 +14,22 @@ public class Book implements Serializable {
     private Long id;
 
     @Column(nullable = false, unique = true, length = 15)
-    private String titulo;
+    private String title;
 
     @Column(nullable = false, unique = true, length = 25)
-    private String subTitulo;
+    private String subTitle;
 
     @Column(nullable = false)
-    private Integer paginas;
+    private Integer pages;
 
     @Column(nullable = false)
-    private Integer ano;
+    private Integer year;
 
-    @Column(nullable = false, unique = true, length = 25)
+    @Column(nullable = false, unique = true, length = 15)
     private String isbn;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    private List<Author> autores;
+    private List<Author> authors;
 
     @ManyToOne(cascade = CascadeType.MERGE, optional = false)
     private Category category;
@@ -45,36 +45,36 @@ public class Book implements Serializable {
         this.id = id;
     }
 
-    public String getTitulo() {
-        return titulo;
+    public String getTitle() {
+        return title;
     }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public String getSubTitulo() {
-        return subTitulo;
+    public String getSubTitle() {
+        return subTitle;
     }
 
-    public void setSubTitulo(String subTitulo) {
-        this.subTitulo = subTitulo;
+    public void setSubTitle(String subTitle) {
+        this.subTitle = subTitle;
     }
 
-    public Integer getPaginas() {
-        return paginas;
+    public Integer getPages() {
+        return pages;
     }
 
-    public void setPaginas(Integer paginas) {
-        this.paginas = paginas;
+    public void setPages(Integer pages) {
+        this.pages = pages;
     }
 
-    public Integer getAno() {
-        return ano;
+    public Integer getYear() {
+        return year;
     }
 
-    public void setAno(Integer ano) {
-        this.ano = ano;
+    public void setYear(Integer year) {
+        this.year = year;
     }
 
     public String getIsbn() {
@@ -85,12 +85,12 @@ public class Book implements Serializable {
         this.isbn = isbn;
     }
 
-    public List<Author> getAutores() {
-        return autores;
+    public List<Author> getAuthors() {
+        return authors;
     }
 
-    public void setAutores(List<Author> autores) {
-        this.autores = autores;
+    public void setAuthors(List<Author> authors) {
+        this.authors = authors;
     }
 
     public Category getCategory() {
@@ -113,12 +113,12 @@ public class Book implements Serializable {
     public String toString() {
         return "Book{" +
                 "id=" + id +
-                ", titulo='" + titulo + '\'' +
-                ", subTitulo='" + subTitulo + '\'' +
-                ", paginas=" + paginas +
-                ", ano=" + ano +
+                ", title='" + title + '\'' +
+                ", subTitle='" + subTitle + '\'' +
+                ", pages=" + pages +
+                ", year=" + year +
                 ", isbn='" + isbn + '\'' +
-                ", autores=" + autores +
+                ", authors=" + authors +
                 ", category=" + category +
                 ", editor=" + editor +
                 '}';

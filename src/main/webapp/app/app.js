@@ -15,17 +15,17 @@ angular
                 templateUrl: '/app/views/home.html',
                 controller: 'HomeController'
             })
-            .when('/autores/novo', {
-                templateUrl: '/app/views/autores/create.html',
-                controller: 'AutorCreateController'
+            .when('/authors/new', {
+                templateUrl: '/app/views/authors/create.html',
+                controller: 'AuthorCreateController'
             })
-            .when('/autores/detalhe/:id', {
-                templateUrl: '/app/views/autores/detail.html',
-                controller: 'AutorDetailController'
+            .when('/authors/detail/:id', {
+                templateUrl: '/app/views/authors/detail.html',
+                controller: 'AuthorDetailController'
             })
-            .when('/autores', {
-                templateUrl: '/app/views/autores/list.html',
-                controller: 'AutorListController'
+            .when('/authors', {
+                templateUrl: '/app/views/authors/list.html',
+                controller: 'AuthorListController'
             });
    })
    .config(function(toastrConfig) {
@@ -50,7 +50,7 @@ angular
            positionClass: 'toast-bottom-right',
            preventDuplicates: false,
            preventOpenDuplicates: false,
-           progressBar: false,
+           progressBar: true,
            tapToDismiss: true,
            target: 'body',
            templates: {

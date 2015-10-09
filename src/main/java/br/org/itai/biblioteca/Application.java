@@ -1,4 +1,4 @@
-package br.org.itai.identidade;
+package br.org.itai.biblioteca;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;

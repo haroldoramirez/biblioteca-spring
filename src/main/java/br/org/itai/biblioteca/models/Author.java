@@ -1,4 +1,4 @@
-package br.org.itai.identidade.models;
+package br.org.itai.biblioteca.models;
 
 
 import javax.persistence.Column;

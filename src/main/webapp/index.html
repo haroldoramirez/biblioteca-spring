@@ -46,10 +46,10 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="/#/autores"><span class="fa fa-user"></span> Autores</a></li>
-                <li><a href="/#/categorias"><span class="fa fa-bookmark"></span> Categorias</a></li>
-                <li><a href="/#/editoras"><span class="fa fa-pencil"></span> Editoras</a></li>
-                <li><a href="/#/livros"><span class="fa fa-book"></span> Livros</a></li>
+                <li><a href="/#/authors"><span class="fa fa-user"></span> Autores</a></li>
+                <li><a href="/#/categories"><span class="fa fa-bookmark"></span> Categorias</a></li>
+                <li><a href="/#/publishers"><span class="fa fa-pencil"></span> Editoras</a></li>
+                <li><a href="/#/books"><span class="fa fa-book"></span> Livros</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
@@ -57,7 +57,7 @@
                     <ul class="dropdown-menu">
                         <li><a href=""><span class="fa fa-sign-in"></span> Login</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href=""><span class="fa fa-sign-out"></span> Sair</a></li>
+                        <li><a href=""><span class="fa fa-sign-out"></span> Logout</a></li>
                     </ul>
                 </li>
             </ul>
@@ -75,7 +75,7 @@
     <footer class="footer">
         <p class="text-center">&copy; 2015 Biblioteca -
             <b>Powered by Spring and AngularJS.
-            </b> Todos os direitos reservados.
+            </b> All rights reserved.
         </p>
     </footer>
 </div>
@@ -105,12 +105,12 @@
 <script src="app/app.js"></script>
 
 <!--Servicos-->
-<script src="app/services/EnderecoService.js"></script>
+<script src="app/services/AddressService.js"></script>
 <script src="app/services/baseUrl.js"></script>
 
 <!--Controllers AngularJS-->
 <script src="app/controllers/HomeController.js"></script>
-<script src="app/controllers/AutorController.js"></script>
+<script src="app/controllers/AuthorController.js"></script>
 
 </body>
 </html>

@@ -1,4 +1,4 @@
-package br.org.itai.identidade.models;
+package br.org.itai.biblioteca.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import java.io.Serializable;
 
 @Entity
-public class Category implements Serializable {
+public class Editor implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -15,7 +15,7 @@ public class Category implements Serializable {
     @GeneratedValue
     private Long id;
 
-    @Column(nullable = false, unique = true, length = 10)
+    @Column(nullable = false, unique = true, length = 25)
     private String name;
 
     public Long getId() {
@@ -36,7 +36,7 @@ public class Category implements Serializable {
 
     @Override
     public String toString() {
-        return "Category{" +
+        return "Editor{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';
