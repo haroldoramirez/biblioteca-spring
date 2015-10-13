@@ -24,7 +24,7 @@ public class AuthorController {
         Author busca = authorRepository.findByName(author.getName());
 
         if (busca != null) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body(new Error("O Autor: '"+busca.getName()+"' já cadastrado."));
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(new Error("O Autor: '"+busca.getName()+"' já esta cadastrado."));
         }
 
         author = authorRepository.save(author);
@@ -51,7 +51,7 @@ public class AuthorController {
 
     @RequestMapping(value = "/authors", method = RequestMethod.GET)
     @Transactional(readOnly = true)
-    public Page<Author> findAll(Pageable pageable) {
+    public Page<Author> buscaTodos(Pageable pageable) {
         return this.authorRepository.findAll(pageable);
     }
 
@@ -71,9 +71,7 @@ public class AuthorController {
     @RequestMapping(value = "/authors", method = RequestMethod.GET, params = "filter")
     @Transactional(readOnly = true)
     public Page<Author> filtro(@RequestParam String filter, Pageable pageable) {
-
-        System.out.print(filter);
-        return this.authorRepository.findAll(pageable);
+        return this.authorRepository.listByFilters(filter, pageable);
     }
 
 }
