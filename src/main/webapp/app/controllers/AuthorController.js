@@ -20,8 +20,8 @@ angular.module('biblioteca')
       $scope.init = function() {
           $scope.nameFilter = '';
 
-          Author.getAll(function(data) {
-             $scope.authors = data;
+          Author.query(function(data) {
+             $scope.authors = data.content;
              $scope.quantity = $scope.authors.length;
           }, function(data) {
               toastr.error(data.data, 'Não foi possível Carregar.');
@@ -31,13 +31,13 @@ angular.module('biblioteca')
       $scope.filter = function() {
 
          if ($scope.nameFilter) {
-              Author.getFilter({filter:$scope.nameFilter}, $scope.author, function(data) {
-                  $scope.authors = data;
+              Author.query({filter:$scope.nameFilter}, $scope.author, function(data) {
+                  $scope.authors = data.content;
               }, function(data) {
                    toastr.error(data.data, 'Não foi possível Carregar.');
                  });
          } else {
-                Autor.getAll(function(data) {
+                Autor.query(function(data) {
                 $scope.authors = data;
               });
          };

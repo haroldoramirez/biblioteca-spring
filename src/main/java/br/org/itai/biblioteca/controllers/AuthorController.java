@@ -3,6 +3,8 @@ package br.org.itai.biblioteca.controllers;
 import br.org.itai.biblioteca.models.Author;
 import br.org.itai.biblioteca.repositories.AuthorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -49,8 +51,8 @@ public class AuthorController {
 
     @RequestMapping(value = "/authors", method = RequestMethod.GET)
     @Transactional(readOnly = true)
-    public List<Author> findAll() {
-        return this.authorRepository.findAll();
+    public Page<Author> findAll(Pageable pageable) {
+        return this.authorRepository.findAll(pageable);
     }
 
     @RequestMapping(value = "/authors/{id}", method = RequestMethod.DELETE)
@@ -66,12 +68,12 @@ public class AuthorController {
         return ResponseEntity.ok(author);
     }
 
-    @RequestMapping(value = "/authors/filter/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/authors", method = RequestMethod.GET, params = "filter")
     @Transactional(readOnly = true)
-    public List<Author> filtro(@PathVariable String filter) {
+    public Page<Author> filtro(@RequestParam String filter, Pageable pageable) {
 
-        System.out.print("pegou o método filtro");
-        return this.authorRepository.findAll();
+        System.out.print(filter);
+        return this.authorRepository.findAll(pageable);
     }
 
 }
