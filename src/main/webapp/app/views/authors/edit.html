@@ -1,13 +1,13 @@
 <div class="well">
 
-    <!--Título de Página-->
+    <!-- Título da Página-->
     <legend>
         <h1 class="font-style">
-            <i class="fa fa-users"></i> Cadastrar Autor
+            <i class="fa fa-users"></i> Editar Autor
         </h1>
     </legend>
 
-    <form class="form-horizontal" ng-submit="save()">
+    <form ng-init="init()" class="form-horizontal" ng-submit="update()">
         <div class="form-group">
 
             <!--Input do nome-->
@@ -25,12 +25,12 @@
             <div class="col-md-12">
                 <br>
                 <p ng-show="!author.name" class="font-style">Campos Obrigatórios (*)</p>
-                <button id="save" class="btn btn-success" type="submit" ng-disabled="!author.name">
-                    <span class="fa fa-floppy-o"></span> Salvar
+                <button type="submit" id="save" class="btn btn-primary" ng-disabled="!author.name">
+                    <span class="fa fa-refresh"></span> Atualizar
                 </button>
-                <button type="reset" id="cancel" class="btn btn-default" ng-click="cancel()">
+                <a class="btn btn-default" href="#/authors/detail/{{author.id}}">
                     <span class="fa fa-arrow-left"></span> Voltar
-                </button>
+                </a>
             </div>
         </div>
     </form>

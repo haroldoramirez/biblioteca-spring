@@ -19,6 +19,10 @@ angular
                 templateUrl: '/app/views/authors/create.html',
                 controller: 'AuthorCreateController'
             })
+            .when('/authors/edit/:id', {
+                templateUrl: '/app/views/authors/edit.html',
+                controller: 'AuthorEditController'
+            })
             .when('/authors/detail/:id', {
                 templateUrl: '/app/views/authors/detail.html',
                 controller: 'AuthorDetailController'
