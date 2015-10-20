@@ -1,0 +1,38 @@
+<div class="well">
+
+    <!-- Modal de confirmação-->
+    <script type="text/ng-template" id="modalConfirmacao.html">
+        <div class="modal-header">
+            <h4 align="center" class="modal-title">Confirmação:</h4>
+        </div>
+        <div align="center" class="modal-body">
+            <p>Deseja remover a Categoria?</p>
+        </div>
+        <div class="modal-footer">
+            <button id="delete" class="btn btn-warning" ng-click="delete()"><span class="fa fa-check"></span> Sim</button>
+            <button class="btn btn-default" ng-click="cancelModal()"><span class="fa fa-times"></span> Cancelar</button>
+        </div>
+    </script>
+
+    <!-- Título da Página-->
+    <legend>
+        <h1 class="font-style">
+            <i class="fa fa-bookmark"></i> Detalhe da Categoria
+            <div class="pull-right">
+                <a type="button" class="btn btn-primary" href="#/categories/edit/{{category.id}}">
+                    <span class="fa fa-refresh"></span> Editar
+                </a>
+                <button type="button" class="btn btn-warning" ng-click="open('sm')">
+                    <span class="fa fa-trash"></span> Remover
+                </button>
+            </div>
+        </h1>
+    </legend>
+
+    <form ng-init="init()">
+        <div class="item-form width-600 margin-bottom-15">
+            <label class="display-block strong">Nome</label>
+            <p class="display-block margin-left-027em">{{category.name}}</p>
+        </div>
+    </form>
+</div>

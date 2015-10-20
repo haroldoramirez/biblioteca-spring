@@ -15,7 +15,7 @@ public class Category implements Serializable {
     @GeneratedValue
     private Long id;
 
-    @Column(nullable = false, unique = true, length = 10)
+    @Column(nullable = false, unique = true, length = 25)
     private String name;
 
     public Long getId() {
@@ -36,7 +36,7 @@ public class Category implements Serializable {
 
     @Override
     public String toString() {
-        return "Category{" +
+        return "CategoryRepository{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';

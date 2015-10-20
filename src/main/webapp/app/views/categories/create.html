@@ -3,7 +3,7 @@
     <!--Título de Página-->
     <legend>
         <h1 class="font-style">
-            <i class="fa fa-users"></i> Cadastrar Autor
+            <i class="fa fa-bookmark"></i> Cadastrar Categoria
         </h1>
     </legend>
 
@@ -13,10 +13,10 @@
             <!--Input do nome-->
             <div class="col-md-3">
                 <label class="control-label" for="name">Nome *</label>
-                <div ng-class="{'has-error': !author.name}">
+                <div ng-class="{'has-error': !category.name}">
                     <div class="input-group">
-                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                        <input placeholder="Insira o nome" maxlength="25" class="form-control" type="text" ng-model="author.name" id="name" required/>
+                        <span class="input-group-addon"><i class="fa fa-bookmark"></i></span>
+                        <input placeholder="Insira o nome" maxlength="25" class="form-control" type="text" ng-model="category.name" id="name" required/>
                     </div>
                 </div>
             </div>
@@ -24,8 +24,8 @@
             <!--Botões-->
             <div class="col-md-12">
                 <br>
-                <p ng-show="!author.name" class="font-style">Campos Obrigatórios (*)</p>
-                <button id="save" class="btn btn-success" type="submit" ng-disabled="!author.name">
+                <p ng-show="!category.name" class="font-style">Campos Obrigatórios (*)</p>
+                <button id="save" class="btn btn-success" type="submit" ng-disabled="!category.name">
                     <span class="fa fa-floppy-o"></span> Salvar
                 </button>
                 <button type="reset" id="cancel" class="btn btn-default" ng-click="cancel()">

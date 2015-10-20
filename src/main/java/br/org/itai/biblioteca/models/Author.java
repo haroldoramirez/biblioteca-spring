@@ -1,6 +1,5 @@
 package br.org.itai.biblioteca.models;
 
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

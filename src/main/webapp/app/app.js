@@ -30,6 +30,22 @@ angular
             .when('/authors', {
                 templateUrl: '/app/views/authors/list.html',
                 controller: 'AuthorListController'
+            })
+            .when('/categories/new', {
+                templateUrl: '/app/views/categories/create.html',
+                controller: 'CategoryCreateController'
+            })
+            .when('/categories/edit/:id', {
+                templateUrl: '/app/views/categories/edit.html',
+                controller: 'CategoryEditController'
+            })
+            .when('/categories/detail/:id', {
+                templateUrl: '/app/views/categories/detail.html',
+                controller: 'CategoryDetailController'
+            })
+            .when('/categories', {
+                templateUrl: '/app/views/categories/list.html',
+                controller: 'CategoryListController'
             });
    })
    .config(function(toastrConfig) {
