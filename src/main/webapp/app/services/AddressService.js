@@ -12,4 +12,11 @@ angular.module('biblioteca')
          update: {method: 'PUT', url: BaseUrl + '/categories/:id', isArray: false},
          query: {isArray: false}
       });
+    }])
+    .service('Publisher',['$resource', 'BaseUrl',
+    function($resource, BaseUrl){
+      return $resource(BaseUrl + '/publishers/:id', {}, {
+         update: {method: 'PUT', url: BaseUrl + '/publishers/:id', isArray: false},
+         query: {isArray: false}
+      });
     }]);

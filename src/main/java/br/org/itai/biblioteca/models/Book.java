@@ -35,7 +35,7 @@ public class Book implements Serializable {
     private Category category;
 
     @ManyToOne(cascade = CascadeType.MERGE, optional = false)
-    private Editor editor;
+    private Publisher publisher;
 
     public Long getId() {
         return id;
@@ -101,26 +101,11 @@ public class Book implements Serializable {
         this.category = category;
     }
 
-    public Editor getEditor() {
-        return editor;
+    public Publisher getPublisher() {
+        return publisher;
     }
 
-    public void setEditor(Editor editor) {
-        this.editor = editor;
-    }
-
-    @Override
-    public String toString() {
-        return "Book{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", subTitle='" + subTitle + '\'' +
-                ", pages=" + pages +
-                ", year=" + year +
-                ", isbn='" + isbn + '\'' +
-                ", authors=" + authors +
-                ", category=" + category +
-                ", editor=" + editor +
-                '}';
+    public void setPublisher(Publisher publisher) {
+        this.publisher = publisher;
     }
 }

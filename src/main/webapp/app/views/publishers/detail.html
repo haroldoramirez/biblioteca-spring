@@ -6,7 +6,7 @@
             <h4 align="center" class="modal-title">Confirmação:</h4>
         </div>
         <div align="center" class="modal-body">
-            <p>Deseja remover o Autor?</p>
+            <p>Deseja remover a Editora?</p>
         </div>
         <div class="modal-footer">
             <button id="delete" class="btn btn-warning" ng-click="delete()"><span class="fa fa-check"></span> Sim</button>
@@ -17,15 +17,15 @@
     <!-- Título da Página-->
     <legend>
         <h1 class="font-style">
-            <i class="fa fa-users"></i> Detalhe do Autor
+            <i class="fa fa-pencil"></i> Detalhe da Editora
             <div class="pull-right">
-                <a type="button" class="btn btn-primary" href="#/authors/edit/{{author.id}}">
+                <a type="button" class="btn btn-primary" href="#/publishers/edit/{{publisher.id}}">
                     <span class="fa fa-refresh"></span> Editar
                 </a>
                 <button type="button" class="btn btn-warning" ng-click="open('sm')">
                     <span class="fa fa-trash"></span> Remover
                 </button>
-                <a class="btn btn-default" href="#/authors">
+                <a class="btn btn-default" href="#/publishers">
                     <span class="fa fa-arrow-left"></span> Voltar
                 </a>
             </div>
@@ -35,7 +35,7 @@
     <form ng-init="init()">
         <div class="item-form width-600 margin-bottom-15">
             <label class="display-block strong">Nome</label>
-            <p class="display-block margin-left-027em">{{author.name}}</p>
+            <p class="display-block margin-left-027em">{{publisher.name}}</p>
         </div>
     </form>
 </div>

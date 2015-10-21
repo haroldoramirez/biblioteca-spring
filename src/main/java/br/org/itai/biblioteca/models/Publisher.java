@@ -4,10 +4,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.io.Serializable;
 
 @Entity
-public class Editor implements Serializable {
+public class Publisher {
 
     private static final long serialVersionUID = 1L;
 
@@ -36,7 +35,7 @@ public class Editor implements Serializable {
 
     @Override
     public String toString() {
-        return "Editor{" +
+        return "Publisher{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';

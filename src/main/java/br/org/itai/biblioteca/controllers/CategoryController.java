@@ -22,7 +22,7 @@ public class CategoryController {
         Category busca = categoryRepository.findByName(category.getName());
 
         if (busca != null) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body(new Error("A categoria: '"+busca.getName()+"' já esta cadastrada."));
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(new Error("A Categoria: '"+busca.getName()+"' já esta cadastrada."));
         }
 
         category = categoryRepository.save(category);
