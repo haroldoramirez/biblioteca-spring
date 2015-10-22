@@ -16,7 +16,7 @@ public class Book implements Serializable {
     @Column(nullable = false, unique = true, length = 15)
     private String title;
 
-    @Column(nullable = false, unique = true, length = 25)
+    @Column(length = 25)
     private String subTitle;
 
     @Column(nullable = false)
@@ -28,14 +28,14 @@ public class Book implements Serializable {
     @Column(nullable = false, unique = true, length = 15)
     private String isbn;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    private List<Author> authors;
-
     @ManyToOne(cascade = CascadeType.MERGE, optional = false)
     private Category category;
 
     @ManyToOne(cascade = CascadeType.MERGE, optional = false)
     private Publisher publisher;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    private List<Author> authors;
 
     public Long getId() {
         return id;

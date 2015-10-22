@@ -1,0 +1,35 @@
+<div class="well">
+
+    <!-- Título da Página-->
+    <legend>
+        <h1 class="font-style">
+            <i class="fa fa-book"></i> Lista de Livros<a class="btn btn-success pull-right" href="#/books/new">
+            <span class="fa fa-plus"></span> Nova Categoria</a>
+        </h1>
+    </legend>
+
+    <!--Input de Busca-->
+    <div class="col-md-5 input-group">
+        <input ng-model="nameFilter" type="search" class="form-control" placeholder="digite o título do livro">
+        <span class="input-group-btn">
+            <button ng-disabled="!nameFilter" class="btn btn-primary" ng-click="filter();"><span class="fa fa-search"></span> Filtrar</button>
+            <button class="btn btn-default" ng-click="init();">Limpar</button>
+        </span>
+    </div>
+
+    <div class="pull-right">
+        <h4 class="font-style">Total de <b>{{quantity}}</b> Registros</h4>
+    </div>
+
+    <h4 class="font-style" ng-show="books.length == 0">Nenhum registro encontrado</h4>
+
+    <!--Tabela-->
+    <table ng-show="books.length" ng-init="init()" class="table-striped table table-hover table-bordered">
+        <tr>
+            <th>Nome</th>
+        </tr>
+        <tr ng-repeat="book in books">
+            <td><b><a href="#/books/detail/{{book.id}}">{{book.title}}</a></b></td>
+        </tr>
+    </table>
+</div>

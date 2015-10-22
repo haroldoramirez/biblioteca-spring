@@ -1,0 +1,132 @@
+<div class="well">
+
+    <!--Título de Página-->
+    <legend>
+        <h1 class="font-style">
+            <i class="fa fa-book"></i> Editar Livro
+        </h1>
+    </legend>
+
+    <form class="form-horizontal" ng-init="init()" ng-submit="update()">
+        <div class="form-group">
+
+            <!--Input do titulo-->
+            <div class="col-md-4">
+                <label class="control-label" for="title">Título *</label>
+                <div ng-class="{'has-error': !book.title}">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-book"></i></span>
+                        <input placeholder="Insira o título" maxlength="15" class="form-control" type="text" ng-model="book.title" id="title" required/>
+                    </div>
+                </div>
+            </div>
+
+            <!--Input do subtitulo-->
+            <div class="col-md-4">
+                <label class="control-label" for="subtitle">Subtítulo</label>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-italic"></i></span>
+                    <input placeholder="Insira o subtítulo" maxlength="25" class="form-control" type="text" ng-model="book.subTitle" id="subtitle"/>
+                </div>
+            </div>
+
+            <!--Input do páginas-->
+            <div class="col-md-2">
+                <label class="control-label" for="pages">Páginas *</label>
+                <div ng-class="{'has-error': !book.pages}">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-italic"></i></span>
+                        <input placeholder="000" maxlength="5" class="form-control" type="number" ng-model="book.pages" id="pages" required/>
+                    </div>
+                </div>
+            </div>
+
+            <!--Input do ano-->
+            <div class="col-md-2">
+                <label class="control-label" for="year">Ano *</label>
+                <div ng-class="{'has-error': !book.year}">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-birthday-cake"></i></span>
+                        <input placeholder="000" maxlength="5" class="form-control" type="number" ng-model="book.year" id="year" required/>
+                    </div>
+                </div>
+            </div>
+
+            <!--Input do isbn-->
+            <div class="col-md-3">
+                <label class="control-label" for="isbn">ISBN *</label>
+                <div ng-class="{'has-error': !book.isbn}">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-copyright"></i></span>
+                        <input placeholder="Insira o isbn" maxlength="15" class="form-control" type="text" ng-model="book.isbn" id="isbn" required/>
+                    </div>
+                </div>
+            </div>
+
+            <!--Input do Categoria-->
+            <div class="col-lg-3">
+                <label class="control-label" for="category">Categoria *</label>
+                <div ng-class="{'has-error': !book.category}">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-tags"></i></span>
+                        <select ng-model="book.category" class="form-control" ng-options="category.name for category in categories" id="category">
+                            <option ng-show="!book.category.id" value="">Selecione</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!--Input do Editora-->
+            <div class="col-lg-3">
+                <label class="control-label" for="category">Editora *</label>
+                <div ng-class="{'has-error': !book.publisher}">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-pencil"></i></span>
+                        <select ng-model="book.publisher" class="form-control" ng-options="publisher.name for publisher in publishers" id="publisher">
+                            <option ng-show="!book.publisher.id" value="">{{book.category.name}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!--Input de Autores-->
+            <div class="col-lg-4">
+                <label class="control-label">Autor *</label>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-users"></i></span>
+                    <select ng-model="authorSelected" class="form-control" ng-options="author.name for author in authors track by author.name">
+                        <option value="">Selecione o autor</option>
+                    </select>
+                    <span class="input-group-btn">
+                        <button ng-click="addAuthor(authorSelected)" type="button" class="btn btn-primary" ng-disabled="!authorSelected">
+                            Adicionar
+                        </button>
+                    </span>
+                </div>
+            </div>
+
+            <!--Lista dos Autores-->
+            <div class="col-lg-4">
+                <label class="control-label">Lista dos Autores</label>
+                <div style="height:120px; overflow-y:scroll" class="panel panel-default">
+                    <!-- List group -->
+                    <ul class="list-group">
+                        <li class="list-group-item" ng-repeat="author in book.authors">{{author.name}} <a class="btn btn-warning btn-xs pull-right" ng-click="removeAuthor(author)"><span class="fa fa-minus"></span></a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!--Botões-->
+            <div class="col-md-12">
+                <br>
+                <p ng-show="!book.title || !book.pages || !book.year || !book.isbn || !book.category || !book.publisher" class="font-style">Campos Obrigatórios (*)</p>
+                <button id="save" class="btn btn-success" type="submit" ng-disabled="!book.title || !book.pages || !book.year || !book.isbn || !book.category || !book.publisher">
+                    <span class="fa fa-floppy-o"></span> Salvar
+                </button>
+                <a class="btn btn-default" href="#/books/detail/{{book.id}}">
+                    <span class="fa fa-arrow-left"></span> Voltar
+                </a>
+            </div>
+        </div>
+    </form>
+</div>

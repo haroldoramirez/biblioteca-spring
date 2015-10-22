@@ -62,6 +62,22 @@ angular
             .when('/publishers', {
                 templateUrl: '/app/views/publishers/list.html',
                 controller: 'PublisherListController'
+            })
+            .when('/books/new', {
+                templateUrl: '/app/views/books/create.html',
+                controller: 'BookCreateController'
+            })
+            .when('/books/edit/:id', {
+                templateUrl: '/app/views/books/edit.html',
+                controller: 'BookEditController'
+            })
+            .when('/books/detail/:id', {
+                templateUrl: '/app/views/books/detail.html',
+                controller: 'BookDetailController'
+            })
+            .when('/books', {
+                templateUrl: '/app/views/books/list.html',
+                controller: 'BookListController'
             });
    })
    .config(function(toastrConfig) {
