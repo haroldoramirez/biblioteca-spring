@@ -21,15 +21,15 @@ angular.module('biblioteca')
 
         $scope.addAuthor = function(authorSelected) {
             $scope.book.authors.push(authorSelected);
-            var index2=$scope.authors.indexOf(authorSelected)
-            $scope.authors.splice(index2,1)
-            $scope.authorSelected = null
+            var index2=$scope.authors.indexOf(authorSelected);
+            $scope.authors.splice(index2,1);
+            $scope.authorSelected = null;
         };
 
         $scope.removeAuthor = function(author) {
-            var index=$scope.book.authors.indexOf(author)
-            $scope.book.authors.splice(index,1)
-            $scope.authors.push(author)
+            var index=$scope.book.authors.indexOf(author);
+            $scope.book.authors.splice(index,1);
+            $scope.authors.push(author);
         };
 
       $scope.save = function() {
@@ -122,17 +122,33 @@ angular.module('biblioteca')
   }).controller('BookEditController', function ($scope, $modal, $routeParams, $location, Author, Book, Publisher, Category, toastr) {
 
 
+    $scope.book = {
+      authors: []
+    };
 
     $scope.init = function() {
         $scope.book = Book.get({id:$routeParams.id}, function(data) {
         $scope.authors = Author.getAll();
-        console.log($scope.authors);
         $scope.categories = Category.getAll();
         $scope.publishers = Publisher.getAll();
         },function(data) {
             toastr.error(data.data, 'Não foi possível Carregar.');
         });
     };
+
+    $scope.addAuthor = function(authorSelected) {
+        $scope.book.authors.push(authorSelected);
+        var index2=$scope.authors.indexOf(authorSelected);
+        $scope.authors.splice(index2,1);
+        $scope.authorSelected = null;
+    };
+
+    $scope.removeAuthor = function(author) {
+        var index=$scope.book.authors.indexOf(author);
+        $scope.book.authors.splice(index,1);
+        $scope.authors.push(author);
+    };
+
 
     $scope.update = function() {
         Book.update({id:$routeParams.id}, $scope.books, function(data) {

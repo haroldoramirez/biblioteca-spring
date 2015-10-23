@@ -16,7 +16,7 @@
                 <div ng-class="{'has-error': !book.title}">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-book"></i></span>
-                        <input placeholder="Insira o título" maxlength="15" class="form-control" type="text" ng-model="book.title" id="title" required/>
+                        <input placeholder="Insira o título" maxlength="25" class="form-control" type="text" ng-model="book.title" id="title" required/>
                     </div>
                 </div>
             </div>
@@ -26,7 +26,7 @@
                 <label class="control-label" for="subtitle">Subtítulo</label>
                 <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-italic"></i></span>
-                    <input placeholder="Insira o subtítulo" maxlength="25" class="form-control" type="text" ng-model="book.subTitle" id="subtitle"/>
+                    <input placeholder="Insira o subtítulo" maxlength="50" class="form-control" type="text" ng-model="book.subTitle" id="subtitle"/>
                 </div>
             </div>
 
@@ -41,13 +41,24 @@
                 </div>
             </div>
 
+            <!--Input do edição-->
+            <div class="col-md-2">
+                <label class="control-label" for="pages">Edição *</label>
+                <div ng-class="{'has-error': !book.edition}">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-italic"></i></span>
+                        <input placeholder="000" maxlength="2" class="form-control" type="number" ng-model="book.edition" id="edition" required/>
+                    </div>
+                </div>
+            </div>
+
             <!--Input do ano-->
             <div class="col-md-2">
                 <label class="control-label" for="year">Ano *</label>
                 <div ng-class="{'has-error': !book.year}">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-birthday-cake"></i></span>
-                        <input placeholder="000" maxlength="5" class="form-control" type="number" ng-model="book.year" id="year" required/>
+                        <input placeholder="000" maxlength="4" class="form-control" type="number" ng-model="book.year" id="year" required/>
                     </div>
                 </div>
             </div>
@@ -64,13 +75,13 @@
             </div>
 
             <!--Input do Categoria-->
-            <div class="col-lg-3">
+            <div class="col-lg-4">
                 <label class="control-label" for="category">Categoria *</label>
                 <div ng-class="{'has-error': !book.category}">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-tags"></i></span>
                         <select ng-model="book.category" class="form-control" ng-options="category.name for category in categories" id="category">
-                            <option ng-show="!book.category.id" value="">Selecione</option>
+                            <option ng-show="!book.category.id" value="">{{book.category.name}}</option>
                         </select>
                     </div>
                 </div>
@@ -83,45 +94,53 @@
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-pencil"></i></span>
                         <select ng-model="book.publisher" class="form-control" ng-options="publisher.name for publisher in publishers" id="publisher">
-                            <option ng-show="!book.publisher.id" value="">{{book.category.name}}</option>
+                            <option ng-show="!book.publisher.id" value="">{{book.publisher.name}}</option>
                         </select>
                     </div>
                 </div>
+                <br>
             </div>
 
-            <!--Input de Autores-->
-            <div class="col-lg-4">
-                <label class="control-label">Autor *</label>
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-users"></i></span>
-                    <select ng-model="authorSelected" class="form-control" ng-options="author.name for author in authors track by author.name">
-                        <option value="">Selecione o autor</option>
-                    </select>
-                    <span class="input-group-btn">
-                        <button ng-click="addAuthor(authorSelected)" type="button" class="btn btn-primary" ng-disabled="!authorSelected">
-                            Adicionar
-                        </button>
-                    </span>
-                </div>
-            </div>
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><b>Autor</b></div>
+                    <div class="panel-body">
+                        <!--Input de Autores-->
+                        <div class="col-lg-4">
+                            <label class="control-label">Autor *</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-users"></i></span>
+                                <select ng-model="authorSelected" class="form-control" ng-options="author.name for author in authors track by author.name">
+                                    <option value="">Selecione o autor</option>
+                                </select>
+                                <span class="input-group-btn">
+                                    <button ng-click="addAuthor(authorSelected)" type="button" class="btn btn-primary" ng-disabled="!authorSelected">
+                                        Adicionar
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
 
-            <!--Lista dos Autores-->
-            <div class="col-lg-4">
-                <label class="control-label">Lista dos Autores</label>
-                <div style="height:120px; overflow-y:scroll" class="panel panel-default">
-                    <!-- List group -->
-                    <ul class="list-group">
-                        <li class="list-group-item" ng-repeat="author in book.authors">{{author.name}} <a class="btn btn-warning btn-xs pull-right" ng-click="removeAuthor(author)"><span class="fa fa-minus"></span></a></li>
-                    </ul>
+                        <!--Lista dos Autores-->
+                        <div class="col-lg-4">
+                            <label class="control-label">Lista dos Autores</label>
+                            <div style="height:120px; overflow-y:scroll" class="panel panel-default">
+                                <!-- List group -->
+                                <ul class="list-group">
+                                    <li class="list-group-item" ng-repeat="author in book.authors">{{author.name}} <a class="btn btn-warning btn-xs pull-right" ng-click="removeAuthor(author)"><span class="fa fa-minus"></span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <!--Botões-->
             <div class="col-md-12">
                 <br>
-                <p ng-show="!book.title || !book.pages || !book.year || !book.isbn || !book.category || !book.publisher" class="font-style">Campos Obrigatórios (*)</p>
-                <button id="save" class="btn btn-success" type="submit" ng-disabled="!book.title || !book.pages || !book.year || !book.isbn || !book.category || !book.publisher">
-                    <span class="fa fa-floppy-o"></span> Salvar
+                <p ng-show="!book.title || !book.pages || !book.year || !book.isbn || !book.category || !book.publisher || !book.edition" class="font-style">Campos Obrigatórios (*)</p>
+                <button type="submit" id="save" class="btn btn-primary" ng-disabled="!book.title || !book.pages || !book.year || !book.isbn || !book.category || !book.publisher || !book.edition" class="font-style">
+                    <span class="fa fa-refresh"></span> Atualizar
                 </button>
                 <a class="btn btn-default" href="#/books/detail/{{book.id}}">
                     <span class="fa fa-arrow-left"></span> Voltar

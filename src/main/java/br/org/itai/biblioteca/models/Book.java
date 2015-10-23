@@ -13,10 +13,10 @@ public class Book implements Serializable {
     @GeneratedValue
     private Long id;
 
-    @Column(nullable = false, unique = true, length = 15)
+    @Column(nullable = false, unique = true, length = 25)
     private String title;
 
-    @Column(length = 25)
+    @Column(length = 50)
     private String subTitle;
 
     @Column(nullable = false)
@@ -24,6 +24,9 @@ public class Book implements Serializable {
 
     @Column(nullable = false)
     private Integer year;
+
+    @Column(nullable = false)
+    private Integer edition;
 
     @Column(nullable = false, unique = true, length = 15)
     private String isbn;
@@ -103,6 +106,14 @@ public class Book implements Serializable {
 
     public Publisher getPublisher() {
         return publisher;
+    }
+
+    public Integer getEdition() {
+        return edition;
+    }
+
+    public void setEdition(Integer edition) {
+        this.edition = edition;
     }
 
     public void setPublisher(Publisher publisher) {

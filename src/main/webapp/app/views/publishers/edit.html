@@ -11,12 +11,92 @@
         <div class="form-group">
 
             <!--Input do nome-->
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <label class="control-label" for="name">Nome *</label>
                 <div ng-class="{'has-error': !publisher.name}">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-pencil"></i></span>
                         <input placeholder="Insira o nome" maxlength="25" class="form-control" type="text" ng-model="publisher.name" id="name" required/>
+                    </div>
+                </div>
+                <br>
+            </div>
+
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><b>Endereço</b></div>
+                    <div class="panel-body">
+                        <!--Input da rua-->
+                        <div class="col-md-5">
+                            <label class="control-label" for="street">Rua</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-pencil"></i></span>
+                                <input placeholder="Insira a rua" maxlength="45" class="form-control" type="text" ng-model="publisher.street" id="street"/>
+                            </div>
+                        </div>
+
+                        <!--Input do numero-->
+                        <div class="col-md-2">
+                            <label class="control-label" for="number">Número</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-pencil"></i></span>
+                                <input placeholder="000" maxlength="5" class="form-control" type="number" ng-model="publisher.number" id="number"/>
+                            </div>
+                        </div>
+
+                        <!--Input do numero-->
+                        <div class="col-md-2">
+                            <label class="control-label" for="zip">Zip/CEP</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-pencil"></i></span>
+                                <input placeholder="000" maxlength="9" class="form-control" type="text" ng-model="publisher.zip" id="zip"/>
+                            </div>
+                        </div>
+
+                        <!--Input do bairro-->
+                        <div class="col-md-3">
+                            <label class="control-label" for="neighborhood">Bairro</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-pencil"></i></span>
+                                <input placeholder="Insira o bairro" maxlength="25" class="form-control" type="text" ng-model="publisher.neighborhood" id="neighborhood"/>
+                            </div>
+                        </div>
+
+                        <!--Input do cidade-->
+                        <div class="col-md-5">
+                            <label class="control-label" for="city">Cidade</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-pencil"></i></span>
+                                <input placeholder="Insira a cidade" maxlength="25" class="form-control" type="text" ng-model="publisher.city" id="city"/>
+                            </div>
+                        </div>
+
+                        <!--Input do estado-->
+                        <div class="col-md-3">
+                            <label class="control-label" for="city">State</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-pencil"></i></span>
+                                <input placeholder="Insira o estado" maxlength="25" class="form-control" type="text" ng-model="publisher.state" id="state"/>
+                            </div>
+                        </div>
+
+                        <!--Input do telefone-->
+                        <div class="col-md-2">
+                            <label class="control-label" for="phone">Telefone</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-pencil"></i></span>
+                                <input placeholder="000" maxlength="12" class="form-control" type="text" ng-model="publisher.phone" id="phone"/>
+                            </div>
+                        </div>
+
+                        <!--Input do fax-->
+                        <div class="col-md-2">
+                            <label class="control-label" for="fax">Fax</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-pencil"></i></span>
+                                <input placeholder="000" maxlength="12" class="form-control" type="text" ng-model="publisher.fax" id="fax"/>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
