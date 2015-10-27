@@ -6,7 +6,8 @@ angular
              'toastr',
              'ngAnimate',
              'angular-loading-bar',
-             'ui.bootstrap'
+             'ui.bootstrap',
+             'ui.utils.masks'
             ]
         )
     .config(function ($routeProvider) {
