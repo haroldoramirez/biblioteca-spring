@@ -63,7 +63,7 @@
         </div>
         <div class="item-form width-600 margin-bottom-15">
             <label class="display-block strong">Autores</label>
-            <p class="display-block margin-left-027em">{{book.authors}}</p>
+            <p ng-repeat="author in book.authors" class="display-block margin-left-027em">{{author.name}}</p>
         </div>
     </form>
 </div>
