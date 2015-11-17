@@ -1,9 +1,6 @@
 package br.org.itai.biblioteca.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
@@ -17,6 +14,9 @@ public class Category implements Serializable {
 
     @Column(nullable = false, unique = true, length = 25)
     private String name;
+
+    @ManyToOne(cascade = CascadeType.MERGE, optional = false)
+    private Category parent;
 
     public Long getId() {
         return id;
@@ -32,6 +32,14 @@ public class Category implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Category getParent() {
+        return parent;
+    }
+
+    public void setParent(Category parent) {
+        this.parent = parent;
     }
 
     @Override
