@@ -3,6 +3,7 @@ package br.org.itai.biblioteca.controllers;
 import br.org.itai.biblioteca.models.Category;
 import br.org.itai.biblioteca.repositories.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -25,7 +26,11 @@ public class CategoryController {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(new Error("A Categoria: '"+busca.getName()+"' já esta cadastrada."));
         }
 
-        category = categoryRepository.save(category);
+        try {
+            category = categoryRepository.save(category);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Error("Erro interno de sistema."));
+        }
 
         return ResponseEntity.ok(category);
     }
@@ -37,7 +42,11 @@ public class CategoryController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new Error("A Categoria não foi encontrada."));
         }
 
-        category = categoryRepository.save(category);
+        try {
+            category = categoryRepository.save(category);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Error("Erro interno de sistema."));
+        }
 
         return ResponseEntity.ok(category);
     }
@@ -61,7 +70,13 @@ public class CategoryController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new Error("A Categoria não foi encontrada."));
         }
 
-        categoryRepository.delete(category);
+        try {
+            categoryRepository.delete(category);
+        } catch (DataIntegrityViolationException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Error("Existem livros que dependem desta Categoria."));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Error("Erro interno de sistema."));
+        }
 
         return ResponseEntity.ok(category);
     }

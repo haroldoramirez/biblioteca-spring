@@ -5,6 +5,7 @@ import br.org.itai.biblioteca.models.Book;
 import br.org.itai.biblioteca.repositories.AuthorRepository;
 import br.org.itai.biblioteca.repositories.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -45,7 +46,11 @@ public class BookController {
 
         book.setAuthors(authors);
 
-        book = bookRepository.save(book);
+        try {
+            book = bookRepository.save(book);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Error("Erro interno de sistema."));
+        }
 
         return ResponseEntity.ok(book);
     }
@@ -57,7 +62,11 @@ public class BookController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new Error("O Livro não foi encontrado."));
         }
 
-        book = bookRepository.save(book);
+        try {
+            book = bookRepository.save(book);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Error("Erro interno de sistema."));
+        }
 
         return ResponseEntity.ok(book);
     }
@@ -81,7 +90,14 @@ public class BookController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new Error("O Livro não foi encontrado."));
         }
 
-        bookRepository.delete(book);
+        try {
+            bookRepository.delete(book);
+        } catch (DataIntegrityViolationException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Error("Existem dados que dependem deste Livro."));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Error("Erro interno de sistema."));
+        }
+
 
         return ResponseEntity.ok(book);
     }

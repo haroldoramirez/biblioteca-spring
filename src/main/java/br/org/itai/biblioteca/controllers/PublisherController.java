@@ -3,6 +3,7 @@ package br.org.itai.biblioteca.controllers;
 import br.org.itai.biblioteca.models.Publisher;
 import br.org.itai.biblioteca.repositories.PublisherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -25,7 +26,11 @@ public class PublisherController {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(new Error("A Editora: '"+busca.getName()+"' já esta cadastrada."));
         }
 
-        publisher = publisherRepository.save(publisher);
+        try {
+            publisher = publisherRepository.save(publisher);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Error("Erro interno de sistema."));
+        }
 
         return ResponseEntity.ok(publisher);
     }
@@ -37,7 +42,11 @@ public class PublisherController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new Error("A Editora não foi encontrada."));
         }
 
-        publisher = publisherRepository.save(publisher);
+        try {
+            publisher = publisherRepository.save(publisher);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Error("Erro interno de sistema."));
+        }
 
         return ResponseEntity.ok(publisher);
     }
@@ -61,7 +70,13 @@ public class PublisherController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new Error("A Editora não foi encontrada."));
         }
 
-        publisherRepository.delete(publisher);
+        try {
+            publisherRepository.delete(publisher);
+        } catch (DataIntegrityViolationException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Error("Existem livros que dependem desta Editora."));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Error("Erro interno de sistema."));
+        }
 
         return ResponseEntity.ok(publisher);
     }

@@ -15,8 +15,9 @@ public class Category implements Serializable {
     @Column(nullable = false, unique = true, length = 25)
     private String name;
 
-    @ManyToOne(cascade = CascadeType.MERGE, optional = false)
-    private Category parent;
+    //TODO
+    //@ManyToOne(cascade = CascadeType.MERGE, optional = false)
+    //private Category parent;
 
     public Long getId() {
         return id;
@@ -34,13 +35,13 @@ public class Category implements Serializable {
         this.name = name;
     }
 
-    public Category getParent() {
-        return parent;
-    }
-
-    public void setParent(Category parent) {
-        this.parent = parent;
-    }
+//    public Category getParent() {
+//        return parent;
+//    }
+//
+//    public void setParent(Category parent) {
+//        this.parent = parent;
+//    }
 
     @Override
     public String toString() {

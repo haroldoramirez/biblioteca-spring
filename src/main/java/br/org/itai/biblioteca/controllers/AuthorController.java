@@ -3,14 +3,13 @@ package br.org.itai.biblioteca.controllers;
 import br.org.itai.biblioteca.models.Author;
 import br.org.itai.biblioteca.repositories.AuthorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 public class AuthorController {
@@ -27,7 +26,11 @@ public class AuthorController {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(new Error("O Autor: '"+busca.getName()+"' já esta cadastrado."));
         }
 
-        author = authorRepository.save(author);
+        try {
+            author = authorRepository.save(author);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Error("Erro interno de sistema."));
+        }
 
         return ResponseEntity.ok(author);
     }
@@ -39,7 +42,11 @@ public class AuthorController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new Error("O Autor não foi encontrado."));
         }
 
-        author = authorRepository.save(author);
+        try {
+            author = authorRepository.save(author);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Error("Erro interno de sistema."));
+        }
 
         return ResponseEntity.ok(author);
     }
@@ -63,7 +70,13 @@ public class AuthorController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new Error("O Autor não foi encontrado."));
         }
 
-        authorRepository.delete(author);
+        try {
+            authorRepository.delete(author);
+        } catch (DataIntegrityViolationException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Error("Existem livros que dependem deste Autor."));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Error("Erro interno de sistema."));
+        }
 
         return ResponseEntity.ok(author);
     }

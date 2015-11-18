@@ -7,7 +7,8 @@ angular
              'ngAnimate',
              'angular-loading-bar',
              'ui.bootstrap',
-             'ui.utils.masks'
+             'ui.utils.masks',
+             'mgcrea.ngStrap.datepicker'
             ]
         )
     .config(function ($routeProvider) {
